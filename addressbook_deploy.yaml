@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: addressbook
+  name: addressbook
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: addressbook
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: addressbook
+    spec:
+      spec:
+      containers:
+      - name: addressbook
+        image: gcr.io/newproject-363919/addressbook1:0.1.18
+        ports:
+        - containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: addressbook
+spec:
+  selector:
+    app: addressbook
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer

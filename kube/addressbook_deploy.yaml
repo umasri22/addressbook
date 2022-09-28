@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: addressbook
+  name: addressbook
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: addressbook
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: addressbook
+    spec:
+      containers:
+      - image: gcr.io/spatial-subject-344813/addressbook:VERSIONNUMB
+#      - image: rakesh635/addressbook
+        name: addressbook
+        ports:
+            - containerPort: 8080
+              protocol: TCP
+

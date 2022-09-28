@@ -1,0 +1,31 @@
+version: 0.2
+
+env:
+  secrets-manager:
+    DOCKERHUB_PASS: "dockerhubkey1:DOCKERHUB_PASS"
+    DOCKERHUB_UNAME: "dockerhubkey1:DOCKERHUB_UNAME"
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR and Docker Hub 
+      - docker login --username $DOCKERHUB_UNAME --password $DOCKERHUB_PASS
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn test 
+      - mvn package
+      - docker build -t rakesh635/testaddressbook:latest .
+  post_build:
+    commands:
+      - echo Build completed on `date`
+#      - docker login --username $DOCKERHUB_UNAME --password $DOCKERHUB_PASS
+      - docker push rakesh635/testaddressbook:latest
+artifacts:
+  files:
+    - target/addressbook.jar
+    - buildspec.yml
+  discard-paths: yes

@@ -74,9 +74,6 @@ steps:
 #       cat devops_manifest/kube/addressbook_deploy.yaml        
   
   # Update the container image using kubectl set 
-  - name: 'gcr.io/cloud-builders/kubectl'
-    id: push-manifest
-    args:
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
   - 'set'

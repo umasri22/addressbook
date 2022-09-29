@@ -3,7 +3,7 @@ steps:
     id: build-number
     waitFor:
       - '-'
-    args: [ 'gs://addressbook1/addressbook1/addressbook', '--major', '0', '--minor', '1' ]
+    args: [ 'gs://project2-363320_cloudbuild/source', '--major', '0', '--minor', '1' ]
   - name: maven:3-jdk-8
     id: mvntest
     waitFor:
@@ -33,6 +33,6 @@ steps:
 ###images: ["gcr.io/$PROJECT_ID/addressbook"]
 
 substitutions:
-  _CONFIG_BUCKET: 'addressbook1'
-  _BUILD_NAME: 'addressbook'
+  _CONFIG_BUCKET: 'project2-363320_cloudbuild'
+  _BUILD_NAME: 'source'
 

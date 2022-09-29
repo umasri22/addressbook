@@ -14,17 +14,12 @@ steps:
     id: build-service
     waitFor:
       - mvnpackage
-#    args: ["build", "-t", "gcr.io/$PROJECT_ID/addressbook:$build_num", "--build-arg=WAR_FILE=target/addressbook.war", "."]
+#    args: ["build", "-t", "gcr.io/$PROJECT_ID/addressbook", "--build-arg=WAR_FILE=target/addressbook.war", "."]
     entrypoint: 'bash'
     args:
       - -c
       - |
-        docker build -t gcr.io/$PROJECT_ID/${_CONTAINERNAME}:latest -t gcr.io/$PROJECT_ID/${_CONTAINERNAME}:$build_num .
-        docker push gcr.io/$PROJECT_ID/${_CONTAINERNAME}:latest 
-        docker push gcr.io/$PROJECT_ID/${_CONTAINERNAME}:$build_num
-###images: ["gcr.io/$PROJECT_ID/${_CONTAINERNAME}"]
-
-substitutions:
-  _CONFIG_BUCKET: 'project2-363320_cloudbuild'
-  _BUILD_NAME: 'source'
+        docker build -t gcr.io/$PROJECT_ID/addressbook1 .
+        docker push gcr.io/$PROJECT_ID/addressbook1
+        ###images: ["gcr.io/$PROJECT_ID/${_CONTAINERNAME}"]
 

@@ -15,8 +15,7 @@ steps:
     waitFor:
       - mvntest
     entrypoint: mvn
-    args: ["package", "-Dmaven.test.skip=true"]              
-            
+    args: ["package", "-Dmaven.test.skip=true"]                 
   - name: gcr.io/cloud-builders/docker
     id: build-service
     waitFor:

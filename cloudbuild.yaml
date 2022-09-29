@@ -19,25 +19,7 @@ steps:
     args:
       - -c
       - |
-        docker build -t gcr.io/$PROJECT_ID/addressbook1 .
-        docker push gcr.io/$PROJECT_ID/addressbook1
-
-#Update the container image using kubectl set
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args:
-    - 'set'
-    - 'image'
-    - 'deployment/${_DEPLOYMENTNAME}'
-    - '${_CONTAINERNAME}=gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}'
-    env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
-substitutions:
-    _PROJECT: 
-    _ZONE: asia-south1-a
-    _GKE_CLUSTER: addressbook
-    _DEPLOYMENTNAME: addressbook1
-    _CONTAINERNAME: addressbook1    
-     
-  # Developers changes
-    _VERSION: v1.0
+        docker build -t gcr.io/$PROJECT_ID/addressbook1:latest -t gcr.io/$PROJECT_ID/addressbook1:$build_num .
+        docker push gcr.io/$PROJECT_ID/addressbook1:latest 
+        docker push gcr.io/$PROJECT_ID/addressbook1:$build_num
+##

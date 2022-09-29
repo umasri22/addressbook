@@ -3,7 +3,7 @@ steps:
     id: build-number
     waitFor:
       - '-'
-    args: [ 'gs://${_CONFIG_BUCKET}/${_BUILD_NAME}', '--major', '0', '--minor', '1' ]
+    args: [ 'gs://addressbook1/addressbook1/addressbook', '--major', '0', '--minor', '1' ]
   - name: maven:3-jdk-8
     id: mvntest
     waitFor:

@@ -28,5 +28,11 @@ steps:
     - 'apply'
     - '-f'
     - 'addressbook_deploy.yaml'
+    env:
+    - 'CLOUDSDK_COMPUTE_REGION=global (non-regional)'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=addressbook'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=addressbook'
+
+
      ##
   

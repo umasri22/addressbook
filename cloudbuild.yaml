@@ -10,7 +10,7 @@ steps:
     entrypoint: mvn
     args: ["package", "-Dmaven.test.skip=true"]                        
   - name: gcr.io/cloud-builders/docker
-    args: ['build','-t','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_BUILD_NAME}','.']  
+    args: ["build", "-t",'gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_BUILD_NAME}','.']  
   # Update the container image using kubectl set 
   - name: 'gcr.io/cloud-builders/kubectl'
     args:

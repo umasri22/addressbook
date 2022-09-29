@@ -20,7 +20,7 @@ spec:
       spec:
       containers:
       - name: addressbook
-        image: gcr.io/newproject-363919/addressbook1:0.1.18
+        image: gcr.io/$PROJECT_ID/addressbook1:1.0
         ports:
         - containerPort: 8080
 ---

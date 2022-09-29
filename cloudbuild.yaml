@@ -13,15 +13,7 @@ steps:
     id: build-service
     waitFor:
       - mvnpackage
-#    args: ["build", "-t", "gcr.io/$PROJECT_ID/addressbook:$build_num", "--build-arg=JAR_FILE=target/addressbook.jar", "."]  -
-    entrypoint: 'bash'
-    args:
-      - -c
-      - |
-        source .buildenv &&
-        docker build -t gcr.io/$PROJECT_ID/addressbook1:latest -t gcr.io/$PROJECT_ID/addressbook1:$build_num .
-        docker push gcr.io/$PROJECT_ID/addressbook1:latest 
-        docker push gcr.io/$PROJECT_ID/addressbook1:$build_num       
+   args: ['build','-t','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_BUILD_NAME}','.']  
   # Update the container image using kubectl set 
   - name: 'gcr.io/cloud-builders/kubectl'
     args:

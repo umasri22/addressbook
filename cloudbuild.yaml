@@ -32,4 +32,12 @@ steps:
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
-
+substitutions:
+    _PROJECT: 
+    _ZONE: asia-south1-a
+    _GKE_CLUSTER: addressbook
+   _DEPLOYMENTNAME: addressbook1
+    _CONTAINERNAME: addressbook1    
+     
+  # Developers changes
+    _VERSION: v1.0
